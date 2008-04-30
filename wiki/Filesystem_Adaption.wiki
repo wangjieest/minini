@@ -1,0 +1,51 @@
+#summary Adapting minIni to a filesystem
+
+= Adapting minIni to a file system =
+
+The minIni library must be configured for a platform with the help of a so- called "glue file". This glue file contains macros (and possibly functions) that map file reading and writing functions used by the minIni library to those provided by the operating system. The glue file must be called "minGlue.h".
+
+To get you started, the minIni distribution comes with the following example glue files:
+
+    * a glue file that maps to the standard C/C++ library (specifically the file I/O functions from the "stdio" package),
+    * a glue file for the EFS Library (EFSL, http://www.efsl.be/),
+    * and a glue file for the FatFs and Tiny-FatFs libraries (http://elm-chan.org/fsw/ff/00index_e.html).
+
+The minIni library does not rely on the availability of a standard C library, because embedded operating systems may have limited support for file I/O. Even on full operating
+systems, separating the file I/O from the INI format parsing carries advantages,
+because it allows you to cache the INI file and thereby enhance performance.
+
+If you are not using the standard C/C++ file I/O library, chances are that you need a different handle or "structure" to identify the storeage than the ubiquitous "`FILE*`" type. If this is the case, you must define the type that minIni uses in the glue file.
+
+{{{
+#define INI_FILETYPE        HANDLE
+}}}
+
+The minIni functions will declare variables of this type and pass these variables to sub-functions (including the glue interface functions) by reference.
+
+Another item that needs to be configured is the buffer size. The functions in the minIni library allocate this buffer on the stack, so the buffer size is directly related to the stack usage. In addition, the buffer size determines the maximum line length that is supported in the INI file and the maximum path name length for the temporary file. For example, `minGlue.h` could contain the definition:
+
+{{{
+#define INI_BUFFERSIZE      512
+}}}
+
+The above macro limits the line length of the INI files supported by minIni to 512 characters.
+
+The temporary file is only used when writing to INI files. The minIni routines copy/change the INI file to a temporary file and then rename that temporary file to the original file. This approach uses the least amount of memory. The path name of the temporary file is the same as the input file, but with the last character set to a tilde ("~").
+
+Below is an example of a glue file (this is the one that maps to the C/C++ "stdio" library).
+
+{{{
+#define INI_BUFFERSIZE  512       /* maximum line length, maximum path length */
+
+/* map required file I/O to the standard C library */
+#include <stdio.h>
+#define ini_openread(filename,file)   ((*(file) = fopen((filename),"rt")) != NULL)
+#define ini_openwrite(filename,file)  ((*(file) = fopen((filename),"wt")) != NULL)
+#define ini_close(file)               fclose(*(file))
+#define ini_read(buffer,size,file)    fgets((buffer),(size),*(file))
+#define ini_write(buffer,file)        fputs((buffer),*(file))
+#define ini_rename(source,dest)       rename((source),(dest))
+#define ini_remove(filename)          remove(filename)
+}}}
+
+As you can see, a glue file is mostly a set of macros that wraps one function definition around another.
