@@ -14,3 +14,8 @@ The FatFs home page is http://elm-chan.org/fsw/ff/00index_e.html.
   # Supports 8.3 format file name. (LFN is not supported)
   # Supports two partitioning rules: FDISK and Super-floppy.
   # Optimized for 8/16-bit microcontrollers.
+
+= Features of Tiny-FatFs (different to FatFs) =
+
+  # Very low memory consumption, suitable for small memory system. (1KB RAM)
+  # Supports only single drive.
