@@ -4,9 +4,9 @@
 
 INI files are best known from the Microsoft Windows, but they are also used with applications that run on other platforms (although their file extension is sometimes ".cfg" instead of ".ini").
 
-INI files have a simple syntax with name/value pairs in a plain text file. The name must be unique (per section) and the value must fit on a single line. The API and the documentation, uses the term "_key name_" (or simply "_key_") instead of "_name_". The key and the value are separated by an equal sign ("=").
+INI files have a simple syntax with name/value pairs in a plain text file. The name must be unique (per section) and the value must fit on a single line. The API and the documentation, uses the term "_key name_" (or simply "_key_") instead of "name". The key and the value are separated by an equal sign ("=").
 
-[INI_File_Syntax INI files] are commonly separated into sections; in minIni, this is optional. A section is a name between square brackets, like "[Recipes]".
+[INI_File_Syntax INI files] are commonly separated into sections; in minIni, this is optional. A section is a name between square brackets, like "[[Recipes]]".
 
 There exists a few variations on INI files that minIni supports, and variations that minIni does not support. For example, minIni supports the colon (":") as an alternative to the equal sign for the key/value delimiter; it also ignores spaces around the "=" or ":" delimitor, but it does not ignore spaces between the brackets in a section name. In other words, it is best not to put spaces behind the opening bracket "[" or before the closing bracked "]" of a section name.
 
