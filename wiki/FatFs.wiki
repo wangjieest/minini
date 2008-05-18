@@ -8,9 +8,9 @@ The FatFs home page is http://elm-chan.org/fsw/ff/00index_e.html.
 
 = Features of FatFs =
 
-1. Separated buffer for FAT structure and each file, suitable for fast multiple file access.
-2. Supports multiple drives and partitions.
-3. Supports FAT12, FAT16 and FAT32.
-4. Supports 8.3 format file name. (LFN is not supported)
-5. Supports two partitioning rules: FDISK and Super-floppy.
-6. Optimized for 8/16-bit microcontrollers.
+  # Separated buffer for FAT structure and each file, suitable for fast multiple file access.
+  # Supports multiple drives and partitions.
+  # Supports FAT12, FAT16 and FAT32.
+  # Supports 8.3 format file name. (LFN is not supported)
+  # Supports two partitioning rules: FDISK and Super-floppy.
+  # Optimized for 8/16-bit microcontrollers.
