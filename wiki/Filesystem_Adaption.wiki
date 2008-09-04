@@ -1,4 +1,5 @@
 #summary Adapting minIni to a filesystem
+#labels Featured
 
 = Adapting minIni to a file system =
 
