@@ -19,6 +19,7 @@ Leading a trailing spaces around values or key names are removed. If you need to
 
 minIni ignores spaces around the "=" or ":" delimiters, but it does not ignore spaces between the brackets in a section name. In other words, it is best not to put spaces behind the opening bracket "`[`" or before the closing bracket "`]`" of a section name.
 
-It is commonly advised to start comments with a semicolon (";") and to put any comments on a line by their own. minIni does not treat lines that start with a semicolon in a special way. That said, names of keys should not contain a semicolon and a line that starts with a semicolon will thereby not match any valid key. Using a semicolon to add comments is therefore more a convention than part of the INI file format.
+Comments in the INI must start with a semicolon (";") or a hash character ("#"),
+and run to the end of the line (the "#" is an extension from minIni).
 
 For more details on the format, please see http://en.wikipedia.org/wiki/INI_file.
