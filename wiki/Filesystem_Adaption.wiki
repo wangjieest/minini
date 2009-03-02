@@ -47,6 +47,7 @@ Below is an example of a glue file (this is the one that maps to the C/C++ "stdi
 #define ini_write(buffer,file)        fputs((buffer),*(file))
 #define ini_rename(source,dest)       rename((source),(dest))
 #define ini_remove(filename)          remove(filename)
+#define ini_rewind(file)              rewind(*(file))
 }}}
 
 As you can see, a glue file is mostly a set of macros that wraps one function definition around another.
