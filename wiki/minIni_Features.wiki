@@ -3,7 +3,7 @@
 minIni is a programmer's library to read and write "INI" files in embedded systems. minIni takes little resources, can be configured for various kinds of file I/O libraries and provides functionality for reading, writing and deleting keys from an INI file.
 
 Although the main feature of minIni is that it is small and minimal, it has a few other features:
-  * minIni supports reading keys that are outside a section, and it thereby supports configuration files that do not use sections (but that are otherwise compatible with \smallcaps{INI} files).
+  * minIni supports reading keys that are outside a section, and it thereby supports configuration files that do not use sections (but that are otherwise compatible with INI files).
   * You may use a colon to separate key and value; the colon is equivalent to the equal sign. That is, the strings "Name: Value" and "Name=Value" have the same meaning.
   * The hash character ("#") is an alternative for the semicolon to start a comment. Trailing comments (i.e. behind a key/value pair on a line) are allowed.
   * Leading and trailing white space around key names and values is ignored.
